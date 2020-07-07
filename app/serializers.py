@@ -4,7 +4,7 @@ from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 from rest_framework_jwt.settings import api_settings
 
-from app.models import User
+from app.models import User, Clothes
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
@@ -56,3 +56,7 @@ class UserModelSerializer(ModelSerializer):
             self.obj = user_obj
 
         return attrs
+class ClothesModelSerializer(ModelSerializer):
+    class Meta:
+        model = Clothes
+        fields = ("name", "price", "brand")
